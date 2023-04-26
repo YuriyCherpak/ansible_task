@@ -1,0 +1,14 @@
+---
+collectd_uninstall: true
+collectd_prometheus_port: 9103
+collectd_default_plugins_list:
+  - collectd-write_prometheus
+collectd_additional_plugins_list:
+  - df
+  - processes
+  - protocols
+  - swap
+  - tcpconns
+  - uptime
+  - users
+  - vmem

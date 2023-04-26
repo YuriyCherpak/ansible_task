@@ -1,0 +1,8 @@
+---
+- name: Install\Uninstall Collectd on Nodes
+  hosts: managed_nodes
+  become: yes
+
+  roles:
+    - collectd
+

@@ -1,0 +1,23 @@
+---
+- name: Install collectd
+  package:
+    name: "collectd"
+    state: latest
+  notify:
+    - restart collectd
+ 
+- name:
+  template:
+    src: collectd-prometheus.conf.j2
+    dest: /etc/collectd/collectd.conf.d/prometheus.conf
+    mode: 0644
+  notify:
+    - restart collectd
+
+- name: Start collectd
+  service:
+    state: started
+    name: "collectd"
+    enabled: yes
+    daemon_reload: yes
+

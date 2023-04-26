@@ -1,0 +1,16 @@
+{% if collectd_additional_plugins_list | length > 0 %}
+{% for plugin in collectd_additional_plugins_list %}
+LoadPlugin {{ plugin }}
+{% endfor %}
+{% endif %}
+
+{% if collectd_default_plugins_list | length > 0 %}
+{% for plugin in collectd_default_plugins_list %}
+LoadPlugin {{ plugin | replace('collectd-', '') }}
+{% endfor %}
+{% endif %}
+
+LoadPlugin write_prometheus
+<Plugin write_prometheus>
+  Port "{{ collectd_prometheus_port }}"
+</Plugin>

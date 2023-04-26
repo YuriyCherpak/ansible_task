@@ -1,0 +1,13 @@
+---
+
+- name: Print List of Interfaces
+  hosts: all
+  connection: local
+  gather_facts: yes
+
+  tasks:
+    - name: Show Network Interfaces 
+      debug:
+        msg:
+          - "Network Interfaces : {{ ansible_interfaces }}"
+

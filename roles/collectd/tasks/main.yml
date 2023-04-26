@@ -1,0 +1,9 @@
+---
+- include_tasks: install.yml
+  when: not collectd_uninstall|bool
+
+- include_tasks: uninstall.yml
+  when: collectd_uninstall|bool
+
+- include_tasks: check_state.yml
+

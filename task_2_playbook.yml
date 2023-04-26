@@ -1,0 +1,8 @@
+---
+- name: Update Managed Nodes
+  hosts: managed_nodes
+  become: yes
+
+  roles:
+    - common
+

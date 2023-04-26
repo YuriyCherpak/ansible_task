@@ -1,0 +1,21 @@
+---
+- name: Stop Collectd
+  service: 
+    name: "collectd"
+    state: stopped
+    enabled: no
+ 
+- name: Uninstall Collectd
+  package:
+    name: "{{ item }}"
+    state: absent
+  loop:
+    - "{{ collectd_additional_plugins_list }}"
+    - "{{ collectd_default_plugins_list }}"
+    - "collectd"
+
+- name: Remove Collectd configs
+  file:
+    path: "/etc/collectd/collectd.conf.d"
+    state: absent
+
